@@ -13,7 +13,7 @@ class RomanNumeralTest extends TestCase
     {
         parent::setUp();
 
-        $this->converter = new RomanNumeralConverter();
+        $this->converter = new RomanNumeralConverter;
     }
 
     public function testConvertsIntegersToRomanNumerals(): void
