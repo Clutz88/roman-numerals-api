@@ -31,3 +31,25 @@ Please create a [git bundle](https://git-scm.com/docs/git-bundle/) and send the 
 ```
 git bundle create <yourname>.bundle --all --branches
 ```
+
+## My approach
+My approach was to save each conversion as a separate entry in the database. While this has the side effect of increasing the size of the 
+database table, it means that the latest endpoint can return the same number if it has been request multiple times. 
+If the last five requests were all for "12" then the first five in the latest will be "12".
+
+I made both the API endpoint and the command call an action, this action then calls the convert service and saves its result to the database.
+Using an action keeps the service purely about converting a number and doesn't mix in Laravel models, while ensuring that we don't
+need to add saving into everywhere that uses the service.
+
+I added some more tests to ensure that both the service is covered by a unit test and that the endpoints and command are covered by feature tests.
+With testing I would normally use Pest as it has taken over PHPUnit as the standard go to for new Laravel projects, I decided to stick with PHPUnit as it had
+already been installed and configured in this codebase.
+
+To ensure ease of use with the laravel command, it can be run by both providing a number such as 
+`php artisan convert:number 10` or you can call the command without any input `php artisan convert:number` and Laravel Prompts will then prompt the user for the number.
+The output isn't styled and doesn't contain any extra output, as it might be to be piped into another command, and any extra characters would cause issues with that.
+
+To add API documentation that's always up to date, and easy to configure, I installed the package `dedoc/scramble` as this generates an OpenAPI spec, and 
+documentation pages, I then changed the index of the project to redirect to the documentation pages.
+
+
