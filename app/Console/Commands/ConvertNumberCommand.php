@@ -13,7 +13,7 @@ class ConvertNumberCommand extends Command implements PromptsForMissingInput
 {
     protected $signature = 'convert:number {number}';
 
-    protected $description = 'Command description';
+    protected $description = 'Convert given number to roman numeral';
 
     protected array $validation_rule = ['number' => ['required', 'integer', 'min:1', 'max:3999']];
 
