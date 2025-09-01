@@ -21,6 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('numerals/convert', ConvertNumberController::class);
-Route::get('numerals/latest', LatestNumeralsController::class);
-Route::get('numerals/top', TopNumeralsController::class);
+Route::post('numerals/convert', ConvertNumberController::class)->name('api.numerals.convert');
+Route::get('numerals/latest', LatestNumeralsController::class)->name('api.numerals.latest');
+Route::get('numerals/top', TopNumeralsController::class)->name('api.numerals.top');

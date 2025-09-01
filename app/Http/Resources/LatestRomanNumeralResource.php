@@ -14,7 +14,7 @@ class LatestRomanNumeralResource extends JsonResource
         return [
             'number' => $this->number,
             'numeral' => $this->numeral,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at->format('c'),
         ];
     }
 }

@@ -10,6 +10,6 @@ class LatestNumeralsController extends Controller
 {
     public function __invoke()
     {
-        return LatestRomanNumeralResource::collection(RomanNumeral::latest()->limit(10)->get());
+        return LatestRomanNumeralResource::collection(RomanNumeral::latest('id')->limit(10)->get());
     }
 }
