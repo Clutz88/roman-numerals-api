@@ -16,7 +16,7 @@ class TopRomanNumeralsTest extends TestCase
 
         $this->get(route('api.numerals.top'))
             ->assertStatus(200)
-            ->assertExactJson(['data' => [
+            ->assertJsonFragment(['data' => [
                 ['number' => 10, 'numeral' => 'X', 'count' => 12],
                 ['number' => 888, 'numeral' => 'DCCCLXXXVIII', 'count' => 11],
                 ['number' => 2024, 'numeral' => 'MMXXIV', 'count' => 10],

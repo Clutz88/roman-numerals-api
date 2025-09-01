@@ -22,8 +22,7 @@ class TopNumeralsController extends Controller
     {
         return TopRomanNumeralResource::collection(
             RomanNumeral::topRequests()
-                ->limit(10)
-                ->get()
+                ->paginate($request->input('per_page', 10))
         );
     }
 }

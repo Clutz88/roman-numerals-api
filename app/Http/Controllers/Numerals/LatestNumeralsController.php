@@ -21,6 +21,9 @@ class LatestNumeralsController extends Controller
      */
     public function __invoke(Request $request): JsonResource
     {
-        return LatestRomanNumeralResource::collection(RomanNumeral::latest('id')->limit(10)->get());
+        return LatestRomanNumeralResource::collection(
+            RomanNumeral::latest('id')
+                ->paginate($request->input('per_page', 10))
+        );
     }
 }

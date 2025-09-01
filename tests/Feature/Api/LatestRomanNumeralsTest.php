@@ -18,7 +18,7 @@ class LatestRomanNumeralsTest extends TestCase
 
         $this->get(route('api.numerals.latest'))
             ->assertStatus(200)
-            ->assertExactJson(['data' => [
+            ->assertJsonFragment(['data' => [
                 ['number' => 2500, 'numeral' => 'MMD', 'created_at' => $created_at->format('c')],
                 ['number' => 99, 'numeral' => 'XCIX', 'created_at' => $created_at->format('c')],
                 ['number' => 44, 'numeral' => 'XLIV', 'created_at' => $created_at->format('c')],
